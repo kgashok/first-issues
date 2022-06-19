@@ -1,11 +1,14 @@
-
+"""
+Basic tests for the good-first-issue Twitter Bot
+"""
+# pylint: disable=E1101
+import json
 # attribution:
 # https://containersolutions.github.io/runbooks/posts/python/module-has-no-attribute/#step-2
 from first_timers import first_timers
-import json
 
 
-example_res = json.load(open('data/example.json', 'r'))
+example_res = json.load(open('data/example.json', 'r', encoding='utf-8'))
 example_issues = example_res['items']
 
 
@@ -13,6 +16,7 @@ def test_fetcher():
     """Test whether first_timer_issues are getting picked up."""
     issue_label = ('good first issue')
     new_issues = first_timers.get_first_timer_issues(issue_label)
+    print("count: ", len(new_issues))
     assert new_issues
 
 
