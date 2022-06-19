@@ -41,6 +41,7 @@ def get_first_timer_issues(issue_label: str) -> list:
 
 
 def check_days_passed(date_created: str, days: int) -> bool:
+    """Returns True if days since issue was created is within DAYS_OLD."""
     created_at = datetime.strptime(date_created, "%Y-%m-%dT%H:%M:%SZ")
     return (datetime.now() - created_at).days < days
 
