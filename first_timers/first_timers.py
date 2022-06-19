@@ -11,7 +11,8 @@ MAX_TWEETS_LEN = 280
 
 ellipse = u'…'
 githubapi = 'https://api.github.com/search/issues'
-FIRST_ISSUE_QUERY_URL = githubapi + '?q=label:"{}"+is:issue+is:open&sort=updated&order=desc'
+FIRST_ISSUE_QUERY_URL = githubapi + \
+    '?q=label:"{}"+is:issue+is:open&sort=updated&order=desc'
 
 
 def humanize_url(api_url: str) -> str:
