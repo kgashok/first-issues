@@ -1,15 +1,16 @@
 # -*- coding: utf-8 -*-
+"""The script file that gets called by the cron job as per schedule"""
 from __future__ import print_function
-import click
 import os
 import sys
 import json
 import warnings
 import requests
+import click
 import first_timers as FT
 
 
-def updateDB(all_issues, db_path):
+def update_db(all_issues, db_path):
     """Truncate and write the new list of issues in the DB."""
     with open(db_path, 'w') as dbFile:
         json.dump(FT.limit_issues(all_issues), dbFile, indent=2)
@@ -93,7 +94,7 @@ def run(only_save, db_path, create, creds_path, debug):
         except UnicodeEncodeError as e:
             click.secho('Unable to post tweets because: ' + str(e), fg='red')
 
-    updateDB(all_issues, db_path)
+    update_db(all_issues, db_path)
 
     if len(fresh_issues) > 0:
         click.echo('Database updated.')
